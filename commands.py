@@ -14,6 +14,8 @@ from image_processing import extract_data_async
 # Calculate average accuracy across all songs, categorise /leaderboard with this
 # Include  calculated accuracy on the /tournament_rank command
 # Fix the assigning average role 
+TEST CHANGE 
+
 
 @bot.event
 async def on_ready():
