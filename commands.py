@@ -16,6 +16,7 @@ from image_processing import extract_data_async
 # Fix the assigning average role 
 TEST CHANGE 
 
+CHANGE BACK
 
 @bot.event
 async def on_ready():
