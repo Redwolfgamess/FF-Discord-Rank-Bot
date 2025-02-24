@@ -106,10 +106,11 @@ async def assign_role(member, instrument, named_rank):
         overall_role = discord.utils.get(guild.roles, name=overall_role_name)
 
         if overall_role:
-            # Remove existing overall rank roles before assigning the new one
+    # Find and remove only the previous overall rank role
             for existing_role in member.roles:
-                if any(rank in existing_role.name for rank in RANK_PRIORITY):
+                if existing_role.name in RANK_PRIORITY:  # Check if it's an overall rank role
                     await member.remove_roles(existing_role)
+                    break  # Stop after removing one
 
             await member.add_roles(overall_role)
         else:
