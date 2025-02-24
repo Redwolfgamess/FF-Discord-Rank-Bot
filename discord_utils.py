@@ -102,7 +102,7 @@ async def assign_role(member, instrument, named_rank):
     # Determine the user's overall rank and assign the role if applicable
     average_rank = await get_average_rank(member)
     if average_rank:
-        overall_role_name = f"🎖️ {average_rank} Player"
+        overall_role_name = f"{average_rank}"
         overall_role = discord.utils.get(guild.roles, name=overall_role_name)
 
         if overall_role:

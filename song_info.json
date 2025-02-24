@@ -1432,7 +1432,8 @@
             "total_notes": 1158
         },
         "Circles": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 796
         },
         "Closer": {
             "difficulty": "X"
@@ -3005,7 +3006,8 @@
             "difficulty": "X"
         },
         "Mr. Brightside": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 1613
         },
         "my ex's best friend": {
             "difficulty": "X"
