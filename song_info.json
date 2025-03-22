@@ -46,7 +46,8 @@
             "difficulty": "X"
         },
         "Armed And Dangerous": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 459
         },
         "Astronaut In The Ocean": {
             "difficulty": "X"
@@ -68,7 +69,8 @@
             "difficulty": "X"
         },
         "Barbarian": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 688
         },
         "Barbie Girl": {
             "difficulty": "X"
@@ -139,7 +141,8 @@
             "difficulty": "X"
         },
         "Blueberry Faygo": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 504
         },
         "Born This Way": {
             "difficulty": "X"
@@ -172,7 +175,8 @@
             "difficulty": "X"
         },
         "Broccoli": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 721
         },
         "Buddy Holly": {
             "difficulty": "X"
@@ -233,7 +237,8 @@
             "difficulty": "X"
         },
         "Circles": {
-            "difficulty": "X"
+            "difficulty": 2.0,
+            "total_notes": 417
         },
         "Closer": {
             "difficulty": "X"
@@ -285,7 +290,8 @@
             "difficulty": "X"
         },
         "Dragula": {
-            "difficulty": "X"
+            "difficulty": 3.0,
+            "total_notes": 394
         },
         "Dreamer": {
             "difficulty": "X"
@@ -346,7 +352,8 @@
             "difficulty": "X"
         },
         "Fighter": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 818
         },
         "Find the Fury": {
             "difficulty": "X"
@@ -367,7 +374,8 @@
             "difficulty": "X"
         },
         "Fly": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 380
         },
         "For Latveria": {
             "difficulty": "X"
@@ -382,7 +390,8 @@
             "difficulty": "X"
         },
         "FTCU": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 430
         },
         "Fuel": {
             "difficulty": "X"
@@ -410,7 +419,8 @@
             "difficulty": "X"
         },
         "good 4 u": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 538
         },
         "Go With The Flow": {
             "difficulty": "X"
@@ -469,10 +479,11 @@
             "difficulty": "X"
         },
         "Hysteria": {
-            "difficulty": "X"
+            "difficulty": 3.0,
+            "total_notes": 164
         },
         "i": {
-            "difficulty": 7,
+            "difficulty": 7.0,
             "total_notes": 835
         },
         "I Had Some Help": {
@@ -499,7 +510,8 @@
             "difficulty": "X"
         },
         "In The End": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 493
         },
         "Into You": {
             "difficulty": "X"
@@ -548,7 +560,8 @@
             "difficulty": "X"
         },
         "Lean Wit Me": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 451
         },
         "Less Than": {
             "difficulty": "X"
@@ -637,7 +650,8 @@
             "difficulty": "X"
         },
         "Next Semester": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 460
         },
         "NIGHT DANCER": {
             "difficulty": 3.0,
@@ -675,7 +689,8 @@
             "difficulty": "X"
         },
         "OKI DOKI": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 428
         },
         "One": {
             "difficulty": "X"
@@ -687,7 +702,8 @@
             "difficulty": "X"
         },
         "Paint The Town Red": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 730
         },
         "Panda": {
             "difficulty": "X"
@@ -715,7 +731,8 @@
             "difficulty": "X"
         },
         "Popular": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 717
         },
         "positions": {
             "difficulty": "X"
@@ -837,7 +854,8 @@
             "difficulty": "X"
         },
         "Somebody Told Me": {
-            "difficulty": "X"
+            "difficulty": 3.0,
+            "total_notes": 436
         },
         "S.O.M.P.": {
             "difficulty": "X"
@@ -871,14 +889,16 @@
             "difficulty": "X"
         },
         "Stressed Out": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 619
         },
         "Stronger (What Doesn't Kill You)": {
             "difficulty": 4.0,
             "total_notes": 528
         },
         "Stupid Love": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 522
         },
         "Sucker": {
             "difficulty": "X"
@@ -973,7 +993,8 @@
             "difficulty": "X"
         },
         "The Search": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 990
         },
         "The Sound of Silence": {
             "difficulty": "X"
@@ -1018,7 +1039,8 @@
             "difficulty": "X"
         },
         "Tusa": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 577
         },
         "Undone - The Sweater Song": {
             "difficulty": "X"
@@ -1103,7 +1125,8 @@
             "difficulty": "X"
         },
         "X Gon' Give It To Ya": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 789
         },
         "XO Tour Llif3": {
             "difficulty": "X"
@@ -1140,7 +1163,8 @@
             "total_notes": 856
         },
         "Yoru Ni Kakeru": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 1410
         },
         "On The Floor": {
             "difficulty": 5.0,
@@ -1173,10 +1197,6 @@
         "Overcompensate": {
             "difficulty": "X"
         },
-        "test": {
-            "difficulty": 7.0,
-            "total_notes": 4
-        },
         "Lose Control": {
             "difficulty": 5.0,
             "total_notes": 485
@@ -1195,6 +1215,38 @@
         "Bones": {
             "difficulty": 3.0,
             "total_notes": 463
+        },
+        "Takeneno Hanakosan": {
+            "difficulty": 4.0,
+            "total_notes": 629
+        },
+        "fat lip": {
+            "difficulty": 5.0,
+            "total_notes": 492
+        },
+        "Adam's Song": {
+            "difficulty": 2.0,
+            "total_notes": 328
+        },
+        "The Way I Are": {
+            "difficulty": 4.0,
+            "total_notes": 455
+        },
+        "I Want It That Way": {
+            "difficulty": 3.0,
+            "total_notes": 449
+        },
+        "World Is Mine": {
+            "difficulty": "X"
+        },
+        "Built Together": {
+            "difficulty": "X"
+        },
+        "Takaneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "Melt": {
+            "difficulty": "X"
         }
     },
     "Lead": {
@@ -1331,8 +1383,7 @@
             "difficulty": "X"
         },
         "Bloom": {
-            "difficulty": 3.0,
-            "total_notes": 529
+            "difficulty": 5
         },
         "Blueberry Faygo": {
             "difficulty": "X"
@@ -1653,7 +1704,8 @@
             "difficulty": "X"
         },
         "Hold Me Closer": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 614
         },
         "Holiday": {
             "difficulty": "X"
@@ -2124,7 +2176,8 @@
             "difficulty": "X"
         },
         "The Brave": {
-            "difficulty": "X"
+            "difficulty": 7.0,
+            "total_notes": 890
         },
         "The Business": {
             "difficulty": "X"
@@ -2372,7 +2425,7 @@
         },
         "test": {
             "difficulty": 4.0,
-            "total_notes": 4
+            "total_notes": 800
         },
         "Lose Control": {
             "difficulty": 3.0,
@@ -2388,6 +2441,34 @@
             "difficulty": "X"
         },
         "Bones": {
+            "difficulty": "X"
+        },
+        "Takeneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "fat lip": {
+            "difficulty": "X"
+        },
+        "Adam's Song": {
+            "difficulty": "X"
+        },
+        "The Way I Are": {
+            "difficulty": "X"
+        },
+        "I Want It That Way": {
+            "difficulty": "X"
+        },
+        "World Is Mine": {
+            "difficulty": "X"
+        },
+        "Built Together": {
+            "difficulty": 6.0,
+            "total_notes": 724
+        },
+        "Takaneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "Melt": {
             "difficulty": "X"
         }
     },
@@ -2462,7 +2543,8 @@
             "difficulty": "X"
         },
         "Basket Case": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 755
         },
         "Battery": {
             "difficulty": "X"
@@ -2549,7 +2631,8 @@
             "difficulty": "X"
         },
         "Break The Curse": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 1159
         },
         "Breed": {
             "difficulty": "X"
@@ -2805,7 +2888,8 @@
             "total_notes": 1258
         },
         "Gwenpool's Multiverse": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 800
         },
         "Hail To The King": {
             "difficulty": "X"
@@ -2962,7 +3046,8 @@
             "difficulty": "X"
         },
         "Lux \u00c6terna": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 1303
         },
         "Magenta Ride": {
             "difficulty": "X"
@@ -3278,7 +3363,8 @@
             "difficulty": "X"
         },
         "Sweet Child O' Mine": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 2078
         },
         "Sweet Victory": {
             "difficulty": "X"
@@ -3429,7 +3515,8 @@
             "difficulty": "X"
         },
         "Welcome to Paradise": {
-            "difficulty": "X"
+            "difficulty": 7.0,
+            "total_notes": 1332
         },
         "Welcome To The Jungle": {
             "difficulty": "X"
@@ -3494,7 +3581,8 @@
             "difficulty": "X"
         },
         "You Don't Know Me": {
-            "difficulty": "X"
+            "difficulty": 7.0,
+            "total_notes": 939
         },
         "YOU DON'T KNOW WHAT YOU'VE GOT": {
             "difficulty": "X"
@@ -3574,6 +3662,34 @@
             "difficulty": "X"
         },
         "Bones": {
+            "difficulty": "X"
+        },
+        "Takeneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "fat lip": {
+            "difficulty": "X"
+        },
+        "Adam's Song": {
+            "difficulty": "X"
+        },
+        "The Way I Are": {
+            "difficulty": "X"
+        },
+        "I Want It That Way": {
+            "difficulty": "X"
+        },
+        "World Is Mine": {
+            "difficulty": "X"
+        },
+        "Built Together": {
+            "difficulty": "X"
+        },
+        "Takaneno Hanakosan": {
+            "difficulty": 5.0,
+            "total_notes": 1660
+        },
+        "Melt": {
             "difficulty": "X"
         }
     },
@@ -4741,6 +4857,33 @@
         },
         "Bones": {
             "difficulty": "X"
+        },
+        "Takeneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "fat lip": {
+            "difficulty": "X"
+        },
+        "Adam's Song": {
+            "difficulty": "X"
+        },
+        "The Way I Are": {
+            "difficulty": "X"
+        },
+        "I Want It That Way": {
+            "difficulty": "X"
+        },
+        "World Is Mine": {
+            "difficulty": "X"
+        },
+        "Built Together": {
+            "difficulty": "X"
+        },
+        "Takaneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "Melt": {
+            "difficulty": "X"
         }
     },
     "Pro Lead": {
@@ -4817,7 +4960,8 @@
             "difficulty": "X"
         },
         "Battery": {
-            "difficulty": "X"
+            "difficulty": 7.0,
+            "total_notes": 1994
         },
         "Beautiful": {
             "difficulty": "X"
@@ -4913,7 +5057,8 @@
             "difficulty": "X"
         },
         "Buddy Holly": {
-            "difficulty": "X"
+            "difficulty": 2.0,
+            "total_notes": 1050
         },
         "Bulls On Parade": {
             "difficulty": "X"
@@ -5150,7 +5295,8 @@
             "difficulty": "X"
         },
         "Hail To The King": {
-            "difficulty": "X"
+            "difficulty": 7.0,
+            "total_notes": 1334
         },
         "Happier Than Ever - Edit": {
             "difficulty": "X"
@@ -5867,7 +6013,8 @@
             "difficulty": "X"
         },
         "m@gical\u2606cure! love shot!": {
-            "difficulty": "X"
+            "difficulty": 7.0,
+            "total_notes": 1211
         },
         "Snow (Hey Oh)": {
             "difficulty": "X"
@@ -5891,6 +6038,34 @@
             "difficulty": "X"
         },
         "Bones": {
+            "difficulty": "X"
+        },
+        "Takeneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "fat lip": {
+            "difficulty": "X"
+        },
+        "Adam's Song": {
+            "difficulty": "X"
+        },
+        "The Way I Are": {
+            "difficulty": "X"
+        },
+        "I Want It That Way": {
+            "difficulty": "X"
+        },
+        "World Is Mine": {
+            "difficulty": 6.0,
+            "total_notes": 1025
+        },
+        "Built Together": {
+            "difficulty": "X"
+        },
+        "Takaneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "Melt": {
             "difficulty": "X"
         }
     },
@@ -7042,6 +7217,33 @@
             "difficulty": "X"
         },
         "Bones": {
+            "difficulty": "X"
+        },
+        "Takeneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "fat lip": {
+            "difficulty": "X"
+        },
+        "Adam's Song": {
+            "difficulty": "X"
+        },
+        "The Way I Are": {
+            "difficulty": "X"
+        },
+        "I Want It That Way": {
+            "difficulty": "X"
+        },
+        "World Is Mine": {
+            "difficulty": "X"
+        },
+        "Built Together": {
+            "difficulty": "X"
+        },
+        "Takaneno Hanakosan": {
+            "difficulty": "X"
+        },
+        "Melt": {
             "difficulty": "X"
         }
     }

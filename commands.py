@@ -1,3 +1,4 @@
+import random
 import discord
 from discord import app_commands
 from discord.ui import Button, View
@@ -32,7 +33,7 @@ async def on_ready():
 
 
 @bot.tree.command(name="add_song", description="Add a new song to all instruments.")
-@app_commands.describe(song_name="This is cap sensitive! Please enter correctly and contact @rank manager if a mistake is made.")
+@app_commands.describe(song_name="This is case-sensitive! Please enter correctly and contact @rank manager if a mistake is made.")
 async def add(interaction: discord.Interaction, song_name: str):
     try:
         print("Add command executed")
@@ -40,21 +41,28 @@ async def add(interaction: discord.Interaction, song_name: str):
         # Load the existing database
         data = load_song_info()
 
-        # Add the song to all instruments if not already present
+        # Check if the song already exists across all instruments
+        song_exists = any(song_name in data.get(instrument, {}) for instrument in INSTRUMENTS)
+
+        if song_exists:
+            await interaction.response.send_message(f"Song '{song_name}' already exists in the database.", ephemeral=True)
+            return
+
+        # Add the song to all instruments
         for instrument in INSTRUMENTS:
             if instrument not in data:
                 data[instrument] = {}
 
-            if song_name not in data[instrument]:
-                data[instrument][song_name] = {"difficulty": "X"}
+            data[instrument][song_name] = {"difficulty": "X"}
 
         # Save the updated database
         save_song_info(data)
 
         await interaction.response.send_message(f"Song '{song_name}' added to all instruments.")
+    
     except Exception as e:
         print(f"Error in add_song command: {e}")
-        await interaction.response.send_message("An error occurred while processing your command.")
+        await interaction.response.send_message("An error occurred while processing your command.", ephemeral=True)
 
 
 @bot.tree.command(name="submit", description="Submit a new score for a specific song and instrument.")
@@ -223,7 +231,7 @@ async def submit(interaction: discord.Interaction, instrument: str, song_name: s
         await interaction.followup.send("Image verification failed.")
         await pending_scores(embed, guild, player_id, submitter_username, instrument, song_name, perfect, good, missed, striked)
         
-@bot.tree.command(name="tournament_rank", description="View the named rank and top 5 scores breakdown for a user on an instrument.")
+@bot.tree.command(name="role_rank", description="View the named rank and top 5 scores breakdown for a user on an instrument.")
 @app_commands.autocomplete(username=username_autocomplete)
 @app_commands.choices(instrument=INSTRUMENT_CHOICES)  # Restrict instrument input to specific choices
 async def namedrank(interaction: discord.Interaction, username: str, instrument: str):
@@ -264,11 +272,13 @@ async def namedrank(interaction: discord.Interaction, username: str, instrument:
         song_details = ""
         for i, (song_name, score) in enumerate(top_5_scores, start=1):
             song_metadata = get_song_metadata(song_name, instrument, normalized_song_info)
+            difficulty = song_metadata.get("difficulty", "Unknown")  # Extract difficulty
             perfect, good = calculate_notes(score, song_metadata)
-            song_details += f"**{i}.** {song_name} — **{score} pts**\n **Perfect:** {perfect} | **Good:** {good}\n\n"
+            song_details += f"**{i}.** {song_name} — **{score} pts**\n **Difficulty:** {difficulty} | **Perfect:** {perfect} | **Good:** {good}\n\n"
+
 
         embed = discord.Embed(
-            title=f"🏆 Tournament Rank for {username}",
+            title=f"🏆 Role Rank for {username}",
             description=f"🎵 **Instrument:** {instrument.capitalize()}",
             color=discord.Color.gold()
         )
@@ -283,88 +293,187 @@ async def namedrank(interaction: discord.Interaction, username: str, instrument:
     except Exception as e:
         await interaction.response.send_message(f"⚠️ Error retrieving named rank: {e}", ephemeral=True)
 
-@bot.tree.command(name="leaderboard_accuracy", description="View the average accuracy of players on an instrument.")
-@app_commands.choices(instrument=INSTRUMENT_CHOICES)  # Restrict instrument input to specific choices
-async def leaderboard_accuracy(interaction: discord.Interaction, instrument: str):
+@bot.tree.command(name="accuracy_leaderboard", description="Display top player scores, optionally filtered by instrument.")
+async def leaderboard(interaction: discord.Interaction, instrument: str = None):
+    await interaction.response.defer()
+    
     try:
         data = load_player_data()
         if not data:
-            await interaction.response.send_message("No player data available.", ephemeral=True)
+            await interaction.followup.send("No player data available.", ephemeral=True)
             return
 
-        accuracy_list = []
-        for username, user_data in data.items():
-            user_instrument_data = get_user_instrument_data(username, instrument, data)
-            if not user_instrument_data or "songs" not in user_instrument_data:
-                continue
+        song_info = load_song_info()  # Load song metadata
+        players = []
+        
+        for player_id, player_data in data.items():
+            username = player_data.get("username", f"User {player_id}")
+            highest_score = None
+            best_song = None
+            best_perfect = 0
+            best_good = 0
 
-            total_accuracy = 0
-            total_songs = 0
-            for song_name, score in user_instrument_data["songs"].items():
-                song_metadata = get_song_metadata(song_name, instrument, load_song_info())
-                if not song_metadata:
+            for key, instrument_data in player_data.items():
+                if not isinstance(instrument_data, dict) or "songs" not in instrument_data:
                     continue
-                perfect, good = calculate_notes(score, song_metadata)
-                accuracy = (perfect + (good * 0.5)) / song_metadata["total_notes"] * 100  # Weighted accuracy formula
-                total_accuracy += accuracy
-                total_songs += 1
+                
+                if instrument and key.lower() != instrument.lower():
+                    continue
+                
+                for song_name, score in instrument_data["songs"].items():
+                    song_metadata = get_song_metadata(song_name, key, song_info)
+                    if not song_metadata:
+                        continue
+                    
+                    perfect, good = calculate_notes(score, song_metadata)  # Correct note calculation
+                    
+                    if highest_score is None or score > highest_score:
+                        highest_score = score
+                        best_song = song_name
+                        best_perfect = perfect
+                        best_good = good
+            
+            if highest_score is not None:
+                players.append((username, highest_score, best_song, best_perfect, best_good))
 
-            if total_songs > 0:
-                accuracy_list.append((username, total_accuracy / total_songs))
-
-        if not accuracy_list:
-            await interaction.response.send_message(f"No accuracy data found for {instrument}.", ephemeral=True)
+        if not players:
+            await interaction.followup.send("No scores found.", ephemeral=True)
             return
 
-        sorted_accuracy = sorted(accuracy_list, key=lambda x: x[1], reverse=True)[:10]  # Top 10 players
+        players_sorted = sorted(players, key=lambda x: x[1], reverse=True)
+        leaderboard_text = "\n".join([
+            f"**{username}**: {score:.2f} ({song})\n**Perfect:** {perfect} | **Good:** {good}"
+            for username, score, song, perfect, good in players_sorted
+        ])
+        
+        embed = discord.Embed(
+            title="🏆 Leaderboard",
+            description=f"Top player scores{' for ' + instrument if instrument else ''}",
+            color=discord.Color.gold()
+        )
+        embed.add_field(name="Top Players", value=leaderboard_text, inline=False)
+        
+        await interaction.followup.send(embed=embed)
+    
+    except discord.errors.NotFound:
+        await interaction.response.send_message("⚠️ Webhook expired, please try again.", ephemeral=True)
+    except Exception as e:
+        await interaction.followup.send(f"⚠️ Error fetching leaderboard: {e}", ephemeral=True)
 
-        leaderboard_text = "\n".join([f"**{i+1}. {user}** — {acc:.2f}%" for i, (user, acc) in enumerate(sorted_accuracy)])
+
+
+@bot.tree.command(name="leaderboard", description="Display top player scores, optionally filtered by instrument.")
+async def leaderboard(interaction: discord.Interaction, instrument: str = None):
+    await interaction.response.defer()
+    
+    try:
+        data = load_player_data()
+        if not data:
+            await interaction.followup.send("No player data available.", ephemeral=True)
+            return
+
+        players = []
+        for player_id, player_data in data.items():
+            username = player_data.get("username", f"User {player_id}")
+            highest_score = None
+            best_song = None
+            best_perfect = 0
+            best_good = 0
+
+            for key, instrument_data in player_data.items():
+                if not isinstance(instrument_data, dict) or "songs" not in instrument_data:
+                    continue
+                
+                if instrument and key.lower() != instrument.lower():
+                    continue
+                
+                for song_name, score in instrument_data["songs"].items():
+                    song_metadata = get_song_metadata(song_name, key, load_song_info())
+                    if not song_metadata:
+                        continue
+                    perfect, good = calculate_notes(score, song_metadata)
+                    
+                    if highest_score is None or score > highest_score:
+                        highest_score = score
+                        best_song = song_name
+                        best_perfect = perfect
+                        best_good = good
+            
+            if highest_score is not None:
+                players.append((username, highest_score, best_song, best_perfect, best_good))
+
+        if not players:
+            await interaction.followup.send("No scores found.", ephemeral=True)
+            return
+
+        players_sorted = sorted(players, key=lambda x: x[1], reverse=True)
+        leaderboard_text = "\n".join([
+            f"**{username}**: {score:.2f} ({song})\n**Perfect:** {perfect} | **Good:** {good}"
+            for username, score, song, perfect, good in players_sorted
+        ])
+        
+        embed = discord.Embed(
+            title="🏆 Leaderboard",
+            description=f"Top player scores{' for ' + instrument if instrument else ''}",
+            color=discord.Color.gold()
+        )
+        embed.add_field(name="Top Players", value=leaderboard_text, inline=False)
+        
+        await interaction.followup.send(embed=embed)
+    
+    except discord.errors.NotFound:
+        await interaction.response.send_message("⚠️ Webhook expired, please try again.", ephemeral=True)
+    except Exception as e:
+        await interaction.followup.send(f"⚠️ Error fetching leaderboard: {e}", ephemeral=True)
+
+
+class SongsPaginationView(View):
+    def __init__(self, username, instrument, top_songs):
+        super().__init__(timeout=120)
+        self.username = username
+        self.instrument = instrument
+        self.top_songs = top_songs
+        self.page = 0
+        self.per_page = 10  # Show 10 songs per page
+
+        self.previous_button.disabled = self.page == 0
+        self.next_button.disabled = self.page >= (len(self.top_songs) - 1) // self.per_page
+
+    def generate_embed(self):
+        start = self.page * self.per_page
+        end = start + self.per_page
+        displayed_songs = self.top_songs[start:end]
 
         embed = discord.Embed(
-            title=f"🎯 Accuracy Leaderboard - {instrument.capitalize()}",
-            description=leaderboard_text,
+            title=f"🎵 Top Performances for {self.username}",
+            description=f"**Instrument:** {self.instrument.capitalize()}",
             color=discord.Color.blue()
         )
 
-        await interaction.response.send_message(embed=embed)
+        for rank, (song_name, score, weight, difficulty, perfect, good) in enumerate(displayed_songs, start=start + 1):
+            embed.add_field(
+                name=f"**{rank}.** {song_name}   -   Difficulty: {difficulty} ⭐ ",
+                value=f"**{score:.2f} pts** (*{weight:.2f}% weight*)\n"
+                      f"🎯 **Perfect:** {perfect} | **Good:** {good}",
+                inline=False
+            )
 
-    except Exception as e:
-        await interaction.response.send_message(f"⚠️ Error retrieving leaderboard: {e}", ephemeral=True)
+        embed.set_footer(text=f"Page {self.page + 1} of {(len(self.top_songs) - 1) // self.per_page + 1}")
+        return embed
 
+    @discord.ui.button(label="⬅️ Previous", style=discord.ButtonStyle.gray)
+    async def previous_button(self, interaction: discord.Interaction, button: Button):
+        self.page -= 1
+        self.previous_button.disabled = self.page == 0
+        self.next_button.disabled = self.page >= (len(self.top_songs) - 1) // self.per_page
+        await interaction.response.edit_message(embed=self.generate_embed(), view=self)
 
-@bot.tree.command(name="leaderboard", description="View the top 25 leaderboard for an instrument")
-@app_commands.describe(instrument="The instrument to filter (optional)")
-@app_commands.choices(instrument=INSTRUMENT_CHOICES) 
-async def leaderboard(interaction: discord.Interaction, instrument: str = None):
-    await interaction.response.defer()
-
-    data = load_player_data()
-
-    leaderboard = []
-    for player_id, player_data in data.items():
-        username = player_data.get("username", "Unknown")
-        for instr, info in player_data.items():
-            if instr == "username":
-                continue
-            if instrument and instr.lower() != instrument.lower():
-                continue
-            final_rank_score = info.get("final_rank_score", 0)
-            leaderboard.append((username, instr, final_rank_score))
-
-    leaderboard = sorted(leaderboard, key=lambda x: x[2], reverse=True)
-
-    if not leaderboard:
-        await interaction.followup.send(
-            f"No leaderboard data found for instrument '{instrument}'." if instrument else "No leaderboard data found."
-        )
-        return
-    response = f"**Top 25 Leaderboard{' for ' + instrument.capitalize() if instrument else ''}:**\n"
-    for i, (username, instr, score) in enumerate(leaderboard[:25], start=1):
-        rank = determine_rank(score)
-        response += "```\n"
-        response += f"#{i}: {username} ({instr.capitalize()}) - {score:.2f}, Rank: {rank}\n"
-        response += "```"
-    await interaction.followup.send(response)
+    @discord.ui.button(label="➡️ Next", style=discord.ButtonStyle.gray)
+    async def next_button(self, interaction: discord.Interaction, button: Button):
+        self.page += 1
+        self.previous_button.disabled = self.page == 0
+        self.next_button.disabled = self.page >= (len(self.top_songs) - 1) // self.per_page
+        await interaction.response.edit_message(embed=self.generate_embed(), view=self)
 
 @bot.tree.command(name="songs", description="Show top 25 performances for a specific user on a specific instrument.")
 @app_commands.autocomplete(username=username_autocomplete)
@@ -374,7 +483,6 @@ async def songs(interaction: discord.Interaction, username: str, instrument: str
         data = load_player_data()
         song_info = load_song_info()
 
-        # Normalize song_info keys for case-insensitive matching
         normalized_song_info = {
             k.lower(): {song.lower().strip(): v for song, v in v.items()} for k, v in song_info.items()
         }
@@ -389,41 +497,29 @@ async def songs(interaction: discord.Interaction, username: str, instrument: str
             await interaction.response.send_message(f"No songs submitted for {instrument} by {username}.", ephemeral=True)
             return
 
-        # Sort songs by scores in descending order
         top_songs = sorted(songs.items(), key=lambda x: x[1], reverse=True)[:25]
 
-        scores_list = []  # Store scores for final rank calculation
-        song_details = ""
+        scores_list = []  
+        formatted_songs = []  
 
         for rank, (song_name, score) in enumerate(top_songs, start=1):
-            score = int(score)
             weight = 100 * (DECAY_RATE ** (rank - 1))
-            scores_list.append(score)  # Collect scores for final rank calculation
+            scores_list.append(score)  
 
-            # Get song metadata
             song_metadata = get_song_metadata(song_name, instrument, normalized_song_info)
             perfect, good = calculate_notes(score, song_metadata)
 
-            if song_metadata:
-                song_details += f"**{rank}.** {song_name} — **{score} pts** (*{weight:.2f}% weight*)\n **Perfect:** {perfect} | **Good:** {good}\n\n"
-            else:
-                song_details += f"**{rank}.** {song_name} — **{score} pts** (*{weight:.2f}% weight*)\n⚠️ Missing song metadata\n\n"
+            difficulty = song_metadata.get("difficulty", "Unknown") if song_metadata else "Unknown"
 
-        # Calculate the final rank using the function
+            formatted_songs.append((song_name, score, weight, difficulty, perfect, good))
+
         final_rank = calculate_final_rank(scores_list)
 
-        # Create an embed for better formatting
-        embed = discord.Embed(
-            title=f"🎵 Top Performances for {username}",
-            description=f"**Instrument:** {instrument.capitalize()}\n🏅 **Final Rank Score:** {final_rank:.2f}",
-            color=discord.Color.blue()
-        )
-        embed.add_field(name="🏆 Best Scores:", value=song_details, inline=False)
+        view = SongsPaginationView(username, instrument, formatted_songs)
+        await interaction.response.send_message(embed=view.generate_embed(), view=view)
 
-        await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f"⚠️ Error retrieving song data: {e}", ephemeral=True)
-
       
 class PaginationView(View):
     def __init__(self, missing_songs, total_songs_with_difficulty, songs_with_total_notes, page=0):
@@ -475,29 +571,286 @@ class PaginationView(View):
         self.next_button.disabled = self.page >= (len(self.missing_songs) - 1) // self.per_page
         await interaction.response.edit_message(embed=self.generate_embed(), view=self)
 
-@bot.tree.command(name="check_total_notes", description="Check how many songs with a set difficulty also have total notes stored.")
-async def check_total_notes(interaction: discord.Interaction):
+@bot.tree.command(name="create_tournament", description="Create tournament divisions based on players' highest scores. (For all players)")
+async def create_tournament(interaction: discord.Interaction):
+    await interaction.response.defer()  # Ensure the interaction is acknowledged
+
+    try:
+        data = load_player_data()
+        if not data:
+            await interaction.followup.send("No player data available for tournament creation.", ephemeral=True)
+            return
+
+        players = []
+        for player_id, player_data in data.items():
+            player_highest = None
+            username = player_data.get("username", f"User {player_id}")
+            for key, instrument_data in player_data.items():
+                if not isinstance(instrument_data, dict) or "songs" not in instrument_data:
+                    continue
+                songs = instrument_data["songs"]
+                if songs:
+                    max_score = max(songs.values())
+                    if player_highest is None or max_score > player_highest:
+                        player_highest = max_score
+            if player_highest is not None:
+                players.append((player_id, username, player_highest))
+        
+        if not players:
+            await interaction.followup.send("No players with scores found.", ephemeral=True)
+            return
+
+        scores = [score for (_, _, score) in players]
+        scores_sorted = sorted(scores)
+        N = len(scores_sorted)
+        q1 = scores_sorted[int(0.25 * (N - 1))]
+        q2 = scores_sorted[int(0.50 * (N - 1))]
+        q3 = scores_sorted[int(0.75 * (N - 1))]
+
+        divisions = {"Division 1": [], "Division 2": [], "Division 3": [], "Division 4": []}
+        for player_id, username, score in players:
+            if score >= q3:
+                divisions["Division 1"].append((username, score))
+            elif score >= q2:
+                divisions["Division 2"].append((username, score))
+            elif score >= q1:
+                divisions["Division 3"].append((username, score))
+            else:
+                divisions["Division 4"].append((username, score))
+
+        embed = discord.Embed(
+            title="🏆 Tournament Divisions",
+            description="Players have been separated into divisions based on their highest scores.",
+            color=discord.Color.purple()
+        )
+        embed.add_field(name="Division Thresholds", value=f"**Q1:** {q1:.2f}\n**Q2:** {q2:.2f}\n**Q3:** {q3:.2f}", inline=False)
+        for division, players_list in divisions.items():
+            if players_list:
+                players_sorted = sorted(players_list, key=lambda x: x[1], reverse=True)
+                division_text = "\n".join([f"**{username}**: {score:.2f}" for username, score in players_sorted])
+            else:
+                division_text = "No players in this division."
+            embed.add_field(name=division, value=division_text, inline=False)
+
+        await interaction.followup.send(embed=embed)
+
+    except discord.errors.NotFound:
+        # Webhook expired, try sending a normal response instead
+        await interaction.response.send_message("⚠️ Webhook expired, please try again.", ephemeral=True)
+    except Exception as e:
+        await interaction.followup.send(f"⚠️ Error creating tournament divisions: {e}", ephemeral=True) 
+
+@bot.tree.command(name="create_tournament_event", description="Create tournament divisions based on players' highest scores.")
+async def create_tournament(interaction: discord.Interaction, event_id: str):
+    # Role restriction
+    required_role_id = 1334940931861778453
+    if required_role_id not in [role.id for role in interaction.user.roles]:
+        await interaction.response.send_message("⛔ You do not have permission to use this command.", ephemeral=True)
+        return
+
+    await interaction.response.defer()  # Defer the response to prevent timeout
+
+    try:
+        # Convert event_id to an integer
+        event_id = int(event_id)
+
+        # Get the event object using the event_id
+        guild = interaction.guild
+        event = discord.utils.get(guild.scheduled_events, id=event_id)  # No await
+
+        if not event:
+            await interaction.followup.send(f"⚠️ No event found with ID {event_id}.", ephemeral=True)
+            return
+
+        # Fetch users who are marked as "Interested" in the event
+        interested_users = [user async for user in event.users()]  # Ensure this works
+
+        if not interested_users:
+            await interaction.followup.send("⚠️ No users are marked as interested in this event.", ephemeral=True)
+            return
+
+        # Tournament role ID to assign
+        tournament_role_id = 1350650150363856896
+        tournament_role = guild.get_role(tournament_role_id)
+
+        if not tournament_role:
+            await interaction.followup.send("⚠️ Tournament role not found.", ephemeral=True)
+            return
+
+        # Filter users who are in the player data
+        data = load_player_data()
+        if not data:
+            await interaction.followup.send("No player data available for tournament creation.", ephemeral=True)
+            return
+
+        players = []
+        for user in interested_users:
+            player_id = str(user.id)  # Ensure the ID matches the format in stored data
+            if player_id not in data:
+                continue  # Skip users who aren't in the tournament data
+
+            player_highest = None
+            username = data[player_id].get("username", user.name)
+            for key, instrument_data in data[player_id].items():
+                if not isinstance(instrument_data, dict) or "songs" not in instrument_data:
+                    continue
+                songs = instrument_data["songs"]
+                if songs:
+                    max_score = max(songs.values())
+                    if player_highest is None or max_score > player_highest:
+                        player_highest = max_score
+            if player_highest is not None:
+                players.append((user, username, player_highest))
+
+        if not players:
+            await interaction.followup.send("No players with scores found among the event participants.", ephemeral=True)
+            return
+
+        # Assign role to all interested users
+        for user, _, _ in players:
+            member = guild.get_member(user.id)  # Fetch the Member object from the User object
+            if member:
+                try:
+                    await member.add_roles(tournament_role)
+                except discord.Forbidden:
+                    await interaction.followup.send(f"⚠️ I don't have permission to assign roles to {user.mention}.", ephemeral=True)
+                except discord.HTTPException:
+                    await interaction.followup.send(f"⚠️ Failed to assign the tournament role to {user.mention}.", ephemeral=True)
+            else:
+                await interaction.followup.send(f"⚠️ Could not find member for user {user.mention}.", ephemeral=True)
+
+        # Shuffle players to randomly create the first bracket
+        random.shuffle(players)
+
+        # Create divisions dynamically ensuring at least 8 players per division
+        divisions = {}
+        current_division = 1
+        division_players = []
+        for user, username, score in players:
+            division_players.append((username, score))
+            if len(division_players) >= 8:  # Ensure at least 8 players in a division
+                divisions[f"Division {current_division}"] = division_players
+                current_division += 1
+                division_players = []  # Reset for the next division
+
+        # If there are leftover players that don't fit into a division of 8
+        if division_players:
+            divisions[f"Division {current_division}"] = division_players
+
+        # Create random brackets for each division
+        brackets = {}
+        for division, players_list in divisions.items():
+            random.shuffle(players_list)  # Shuffle players in the division
+            division_brackets = []
+            if len(players_list) % 2 == 1:  # If there's an odd number of players
+                # Give one player a bye (no match)
+                bye_player = players_list[-1]  # Last player in the list gets a bye
+                division_brackets.append((f"{bye_player[0]} (Bye)", "No Match"))  # Add the bye player to the bracket
+                players_list = players_list[:-1]  # Remove the bye player from the list
+            
+            # Create pairs for the bracket (ensuring even number of players)
+            for i in range(0, len(players_list), 2):
+                division_brackets.append((players_list[i], players_list[i + 1]))
+            brackets[division] = division_brackets
+
+        # Create embed with division and bracket results
+        embed = discord.Embed(
+            title=f"🏆 Tournament Divisions & Brackets - {event.name}",
+            description="Players have been separated into divisions and randomized brackets have been created.",
+            color=discord.Color.purple()
+        )
+
+        # Add division results and brackets to the embed
+        for division, players_list in divisions.items():
+            if players_list:
+                players_sorted = sorted(players_list, key=lambda x: x[1], reverse=True)
+                division_text = "\n".join([f"**{username}**: {score:.2f}" for username, score in players_sorted])
+            else:
+                division_text = "No players in this division."
+
+            # Add division players
+            embed.add_field(name=f"{division} Players", value=division_text, inline=False)
+
+            # Add bracket pairs
+            division_brackets = brackets[division]
+            bracket_text = "\n".join([
+                f"**Match {index+1}:** {player1[0]} vs {player2[0]}" if player2 != "No Match" 
+                else f"**Match {index+1}:** {player1[0]} (Bye)" 
+                for index, (player1, player2) in enumerate(division_brackets)
+            ])
+
+            embed.add_field(name=f"{division} Brackets", value=bracket_text, inline=False)
+
+        await interaction.followup.send(embed=embed)
+
+    except Exception as e:
+        await interaction.followup.send(f"⚠️ Error creating tournament divisions: {e}", ephemeral=True)
+
+
+@bot.tree.command(name="remove_tournament_role", description="Remove the tournament role from all players.")
+async def remove_tournament_role(interaction: discord.Interaction):
+    # Role restriction
+    required_role_id = 1334940931861778453
+    if required_role_id not in [role.id for role in interaction.user.roles]:
+        await interaction.response.send_message("⛔ You do not have permission to use this command.", ephemeral=True)
+        return
+
     await interaction.response.defer()
 
-    song_info = load_song_info()
-    total_songs_with_difficulty = 0
-    songs_with_total_notes = 0
-    missing_songs = []
+    try:
+        guild = interaction.guild
+        tournament_role_id = 1350650150363856896
+        tournament_role = guild.get_role(tournament_role_id)
 
-    for instrument, songs in song_info.items():
-        for song_name, data in songs.items():
-            difficulty = data.get("difficulty", "X")
-            total_notes = data.get("total_notes")
+        if not tournament_role:
+            await interaction.followup.send("⚠️ Tournament role not found.", ephemeral=True)
+            return
 
-            if isinstance(difficulty, (int, float)) and difficulty != "X":
-                total_songs_with_difficulty += 1
-                if isinstance(total_notes, int):
-                    songs_with_total_notes += 1
-                else:
-                    missing_songs.append((instrument, song_name))
+        # Find members with the role
+        members_with_role = [member async for member in guild.fetch_members() if tournament_role in member.roles]
 
-    view = PaginationView(missing_songs, total_songs_with_difficulty, songs_with_total_notes)
-    await interaction.followup.send(embed=view.generate_embed(), view=view)
+        if not members_with_role:
+            await interaction.followup.send("⚠️ No members have the tournament role.", ephemeral=True)
+            return
+
+        # Remove the role from all members
+        for member in members_with_role:
+            try:
+                await member.remove_roles(tournament_role)
+            except discord.Forbidden:
+                await interaction.followup.send(f"⚠️ I don't have permission to remove roles from {member.mention}.", ephemeral=True)
+            except discord.HTTPException:
+                await interaction.followup.send(f"⚠️ Failed to remove the tournament role from {member.mention}.", ephemeral=True)
+
+        await interaction.followup.send("✅ The tournament role has been removed from all players.")
+
+    except Exception as e:
+        await interaction.followup.send(f"⚠️ Error removing tournament role: {e}", ephemeral=True)
+
+
+# @bot.tree.command(name="check_total_notes", description="Check how many songs with a set difficulty also have total notes stored.")
+# async def check_total_notes(interaction: discord.Interaction):
+#     await interaction.response.defer()
+
+#     song_info = load_song_info()
+#     total_songs_with_difficulty = 0
+#     songs_with_total_notes = 0
+#     missing_songs = []
+
+#     for instrument, songs in song_info.items():
+#         for song_name, data in songs.items():
+#             difficulty = data.get("difficulty", "X")
+#             total_notes = data.get("total_notes")
+
+#             if isinstance(difficulty, (int, float)) and difficulty != "X":
+#                 total_songs_with_difficulty += 1
+#                 if isinstance(total_notes, int):
+#                     songs_with_total_notes += 1
+#                 else:
+#                     missing_songs.append((instrument, song_name))
+
+#     view = PaginationView(missing_songs, total_songs_with_difficulty, songs_with_total_notes)
+#     await interaction.followup.send(embed=view.generate_embed(), view=view)
 
 # @bot.tree.command(name="help", description="Show the bot's help message.")
 # async def help_command(interaction: discord.Interaction):

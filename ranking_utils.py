@@ -11,18 +11,13 @@ def calculate_normalized_score(perfect, good, missed, striked, difficulty):
     total_notes = perfect + good + missed + striked
     
     if total_notes == 0:
-        return 0  # Avoid division by zero
+        return 0 
     
-    # Calculate the perfect-to-good ratio, emphasizing perfect accuracy
-    accuracy_score = (perfect / total_notes) * 100  # Convert to percentage
-    
-    # Apply a small scaling factor based on total notes (logarithmic for diminishing returns)
-    scaling_factor = 1 + (total_notes ** 0.1) * 0.02  # Keeps scaling mild
-    
-    # Final normalized score
+    accuracy_score = (perfect / total_notes) * 100 
+    scaling_factor = 1 + (total_notes ** 0.1) * 0.02 
     normalized_score = accuracy_score * scaling_factor * difficulty
     
-    return round(normalized_score, 2)  # Round for readability
+    return round(normalized_score, 2)  
 
 def calculate_final_rank(scores):
     scores = sorted(scores, reverse=True)[:TOP_PERFORMANCES]
@@ -57,23 +52,15 @@ def calculate_notes(score, song_metadata):
 
 def reverse_normalized_score(normalized_score, missed, striked, difficulty, total_notes):
     if difficulty == 0 or total_notes == 0:
-        return 0, 0  # Avoid division by zero
+        return 0, 0  
     
-    # Compute the scaling factor
     scaling_factor = 1 + (total_notes ** 0.1) * 0.02
 
-    # Calculate the perfect note count
     perfect_ratio = normalized_score / (scaling_factor * difficulty * 100)
     perfect = perfect_ratio * total_notes
 
-    # Calculate the remaining good notes
-    good = total_notes - (perfect + missed + striked)
-
-    # Adjust rounding to prevent drift
     perfect = round(perfect)
-    good = total_notes - (perfect + missed + striked)  # Ensures sum consistency
+    good = total_notes - (perfect + missed + striked)  
 
-    perfect += 1
-    good -= 1
     return perfect, good
 

@@ -9,15 +9,18 @@
                 "Ride the Lightning": 621.78,
                 "Master of Puppets": 562.86,
                 "Everybody (Backstreet's Back)": 403.93,
-                "Mr. Brightside": 573.96
+                "Mr. Brightside": 573.96,
+                "Lux \u00c6terna": 578.57,
+                "Dreamer": 640.11,
+                "t r a n s p a r e n t s o u l": 571.48
             },
             "named_rank": "Champion",
-            "final_rank_score": 3486.1477980989057,
+            "final_rank_score": 4713.043244762549,
             "rank": "Top 50"
         },
         "lead": {
             "songs": {
-                "For Latveria": 668.29,
+                "For Latveria": 681.13,
                 "Hail To The King": 658.99,
                 "Seek & Destroy": 607.4,
                 "Master of Puppets": 607.48,
@@ -27,11 +30,15 @@
                 "Lux \u00c6terna": 563.07,
                 "Sweet Child O' Mine": 584.28,
                 "Circles": 407.77,
-                "One": 620.33
+                "One": 629.84,
+                "Sad But True": 583.35,
+                "Carry on Wayward Son": 665.58,
+                "M@GICAL\u2606CURE! LOVE SHOT!": 629.4,
+                "Ride the Lightning": 639.46
             },
-            "final_rank_score": 5174.381297410708,
+            "final_rank_score": 6592.651608878175,
             "rank": "Top 50",
-            "named_rank": "Champion"
+            "named_rank": "Unreal"
         },
         "vocals": {
             "songs": {
@@ -41,10 +48,12 @@
                 "Sandstorm": 482.59,
                 "Notorious Thugs": 665.94,
                 "Surround Sound": 683.24,
-                "No Scrubs": 590.5
+                "No Scrubs": 590.5,
+                "Tusa": 600.0,
+                "Bling-Bang-Bang-Born": 651.33
             },
-            "named_rank": "Champion",
-            "final_rank_score": 3737.327364159218,
+            "named_rank": "Unreal",
+            "final_rank_score": 4609.056967778694,
             "rank": "Top 50"
         },
         "bass": {
@@ -52,12 +61,12 @@
                 "Ride The Lightning": 592.95,
                 "One": 651.12,
                 "(Don't Fear) The Reaper": 546.16,
-                "Hysteria": 539.32,
+                "Hysteria": 556.95,
                 "Nightmare": 647.02,
                 "Master of Puppets": 610.0
             },
             "named_rank": "Champion",
-            "final_rank_score": 3186.8607749625,
+            "final_rank_score": 3200.9419590125,
             "rank": "Top 50"
         }
     },
@@ -153,11 +162,12 @@
                 "i": 718.72,
                 "Pea Like Me": 713.87,
                 "Notorious Thugs": 705.2,
-                "Get Low": 611.59
+                "Get Low": 611.59,
+                "8-Bit Beat": 699.46
             },
-            "final_rank_score": 3147.1399024374996,
+            "final_rank_score": 3691.947250190625,
             "rank": "Top 50",
-            "named_rank": "Unreal"
+            "named_rank": "Top 50"
         },
         "lead": {
             "songs": {
@@ -175,11 +185,15 @@
         "drums": {
             "songs": {
                 "Dreamer": 710.18,
-                "March Of The Pigs": 715.46
+                "March Of The Pigs": 715.46,
+                "Welcome to Paradise": 688.26,
+                "You Don't Know Me": 698.31,
+                "(Don't Fear) The Reaper": 675.08,
+                "Everlong": 679.92
             },
-            "final_rank_score": 1390.1309999999999,
+            "final_rank_score": 3686.6158172874993,
             "rank": "Top 50",
-            "named_rank": "Top 50"
+            "named_rank": "Unreal"
         }
     },
     "579558052802461696": {
@@ -204,13 +218,23 @@
                 "With Or Without You": 494.78,
                 "Godzilla": 404.24,
                 "No Scrubs": 396.81
-            }
+            },
+            "named_rank": "Gold"
         },
         "lead": {
             "songs": {
                 "Seek & Destroy": 644.48,
                 "Hail To The King": 691.39
-            }
+            },
+            "named_rank": "Unreal"
+        },
+        "vocals": {
+            "songs": {
+                "8-Bit Beat": 686.47
+            },
+            "final_rank_score": 686.47,
+            "rank": "Unreal",
+            "named_rank": "Unreal"
         }
     },
     "730652667030011954": {
@@ -397,10 +421,20 @@
         "username": "txm_is_better",
         "vocals": {
             "songs": {
-                "Bling-Bang-Bang-Born": 636.31,
+                "Bling-Bang-Bang-Born": 671.22,
                 "Cake By The Ocean": 400.47,
-                "Feather": 379.19
-            }
+                "Feather": 379.19,
+                "IDOL": 599.53,
+                "Pea Like Me": 671.99,
+                "Yoru Ni Kakeru": 590.32,
+                "i": 674.29,
+                "The Brave": 590.64,
+                "8-Bit Beat": 688.32,
+                "Surround Sound": 693.06
+            },
+            "final_rank_score": 5107.729096259901,
+            "rank": "Top 50",
+            "named_rank": "Unreal"
         }
     },
     "568214330135281704": {
@@ -418,13 +452,37 @@
                 "IDOL": 432.71,
                 "Surround Sound": 544.17,
                 "NIGHT DANCER": 239.17,
-                "Airplanes": 394.42,
+                "Airplanes": 425.58,
                 "Espresso": 322.13,
                 "Misery Business": 404.08,
                 "Happier Than Ever - Edit": 322.22,
-                "Stronger (What Doesn't Kill You)": 347.38
+                "Stronger (What Doesn't Kill You)": 347.38,
+                "Lean Wit Me": 312.66,
+                "Yoru Ni Kakeru": 437.3,
+                "Hysteria": 258.96,
+                "FTCU": 324.99,
+                "Broccoli": 411.27,
+                "Feather": 395.67,
+                "In The End": 410.24,
+                "Takeneno Hanakosan": 347.9,
+                "The Search": 435.48,
+                "Next Semester": 325.5,
+                "Somebody Told Me": 252.52,
+                "No Scrubs": 455.36,
+                "fat lip": 418.45,
+                "Starships": 386.31,
+                "X Gon' Give It To Ya": 436.13,
+                "Fly": 330.5,
+                "good 4 u": 404.97,
+                "I Want It That Way": 250.78,
+                "Circles": 178.97,
+                "Bones": 235.83,
+                "Stupid Love": 325.13,
+                "Fighter": 406.5,
+                "OKI DOKI": 391.17,
+                "Paint The Town Red": 420.45
             },
-            "final_rank_score": 4536.324776944896,
+            "final_rank_score": 7107.922337415868,
             "rank": "Top 50",
             "named_rank": "Gold"
         },
@@ -502,6 +560,159 @@
             "final_rank_score": 597.6,
             "rank": "Diamond",
             "named_rank": "Silver"
+        }
+    },
+    "723204078082982088": {
+        "username": "batteryonme",
+        "lead": {
+            "songs": {
+                "One": 600.08
+            },
+            "final_rank_score": 600.08,
+            "rank": "Champion",
+            "named_rank": "Champion"
+        }
+    },
+    "535769226263396362": {
+        "username": "redwolfgamess",
+        "lead": {
+            "songs": {
+                "test": 368.85,
+                "Hold Me Closer": 473.36
+            },
+            "final_rank_score": 823.7675,
+            "rank": "Top 50",
+            "named_rank": "Gold"
+        },
+        "vocals": {
+            "songs": {
+                "Adam's Song": 200.19,
+                "Surround Sound": 687.77,
+                "The Way I Are": 378.29,
+                "8-Bit Beat": 667.92,
+                "I Want It That Way": 301.35,
+                "Bling-Bang-Bang-Born": 660.45,
+                "Armed And Dangerous": 495.87,
+                "Popular": 494.67,
+                "Blueberry Faygo": 395.97,
+                "Barbarian": 592.27,
+                "Pea Like Me": 669.13,
+                "Stressed Out": 587.61
+            },
+            "final_rank_score": 4934.949282679351,
+            "rank": "Top 50",
+            "named_rank": "Unreal"
+        }
+    },
+    "1080684408941596784": {
+        "username": "juanpgp",
+        "lead": {
+            "songs": {
+                "Yoru Ni Kakeru": 728.91,
+                "The Brave": 727.61,
+                "Change": 727.37
+            },
+            "final_rank_score": 2076.590925,
+            "rank": "Top 50",
+            "named_rank": "Top 50"
+        },
+        "drums": {
+            "songs": {
+                "March Of The Pigs": 729.83,
+                "Everlong": 729.85,
+                "You Don't Know Me": 727.76,
+                "Overcompensate": 624.0
+            },
+            "final_rank_score": 2614.9939,
+            "rank": "Top 50",
+            "named_rank": "Top 50"
+        },
+        "bass": {
+            "songs": {
+                "i": 726.4,
+                "Nightmare": 728.3
+            },
+            "final_rank_score": 1418.3799999999999,
+            "rank": "Top 50",
+            "named_rank": "Top 50"
+        },
+        "vocals": {
+            "songs": {
+                "Yoru Ni Kakeru": 623.34,
+                "Stressed Out": 622.82,
+                "Bling-Bang-Bang-Born": 724.26
+            },
+            "final_rank_score": 1878.52805,
+            "rank": "Top 50",
+            "named_rank": "Unreal"
+        }
+    },
+    "1231035624841150544": {
+        "username": "lemlem.personal",
+        "pro lead": {
+            "songs": {
+                "World Is Mine": 582.0,
+                "Battery": 612.79,
+                "M@GICAL\u2606CURE! LOVE SHOT!": 645.46,
+                "Hail To The King": 622.22,
+                "Buddy Holly": 192.17
+            },
+            "final_rank_score": 2445.1278910625,
+            "rank": "Top 50",
+            "named_rank": "Diamond"
+        }
+    },
+    "884140091109437470": {
+        "username": "stw.orca",
+        "drums": {
+            "songs": {
+                "Gwenpool's Multiverse": 368.85,
+                "Break The Curse": 566.12,
+                "Basket Case": 576.22,
+                "Sweet Child O' Mine": 579.99,
+                "Takaneno Hanakosan": 464.81,
+                "March Of The Pigs": 619.41,
+                "Dexting": 546.49
+            },
+            "final_rank_score": 3251.735466978906,
+            "rank": "Top 50",
+            "named_rank": "Diamond"
+        },
+        "lead": {
+            "songs": {
+                "Built Together": 534.53,
+                "One": 621.25,
+                "Ride the Lightning": 591.17,
+                "Yoru Ni Kakeru": 656.02,
+                "Carry on Wayward Son": 669.42,
+                "Change": 666.68
+            },
+            "final_rank_score": 3322.5890530843744,
+            "rank": "Top 50",
+            "named_rank": "Champion"
+        },
+        "bass": {
+            "songs": {
+                "Master of Puppets": 598.63,
+                "i": 676.52,
+                "One": 645.86
+            },
+            "final_rank_score": 1830.350575,
+            "rank": "Top 50",
+            "named_rank": "Champion"
+        },
+        "vocals": {
+            "songs": {
+                "Surround Sound": 649.98,
+                "IDOL": 579.14,
+                "Bling-Bang-Bang-Born": 643.88,
+                "Pea Like Me": 659.61,
+                "i": 661.22,
+                "Dragula": 305.38
+            },
+            "final_rank_score": 3134.5134373187498,
+            "rank": "Top 50",
+            "named_rank": "Champion"
         }
     }
 }

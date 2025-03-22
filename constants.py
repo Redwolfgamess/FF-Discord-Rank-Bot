@@ -102,6 +102,75 @@ INSTRUMENT_THRESHOLDS = {
     "pro lead": PRO_LEAD_RANK_THRESHOLDS,
     "pro bass": PRO_BASS_RANK_THRESHOLDS
 }
+#---------------------ACCURACY RANK THRESHOLDS------------------
+ACCURACY_LEAD_RANK_THRESHOLDS = {
+    "Top 50": 95, 
+    "Unreal": 90,
+    "Champion": 80,
+    "Diamond": 70,
+    "Gold": 60,
+    "Silver": 50,
+    "Bronze": 0,
+}
+# Rank Threshold for Drums
+ACCURACY_DRUMS_RANK_THRESHOLDS = {
+    "Top 50": 95, 
+    "Unreal": 90,
+    "Champion": 80,
+    "Diamond": 70,
+    "Gold": 60,
+    "Silver": 50,
+    "Bronze": 0,
+}
+# Rank Threshold for Vocals
+ACCURACY_VOCALS_RANK_THRESHOLDS = {
+    "Top 50": 95, 
+    "Unreal": 90,
+    "Champion": 80,
+    "Diamond": 70,
+    "Gold": 60,
+    "Silver": 50,
+    "Bronze": 0,
+}
+# Rank Threshold for Bass
+ACCURACY_BASS_RANK_THRESHOLDS = {
+    "Top 50": 95, 
+    "Unreal": 90,
+    "Champion": 80,
+    "Diamond": 70,
+    "Gold": 60,
+    "Silver": 50,
+    "Bronze": 0,
+}
+# Rank Threshold for Bass
+ACCURACY_PRO_LEAD_RANK_THRESHOLDS = {
+    "Top 50": 95, 
+    "Unreal": 90,
+    "Champion": 80,
+    "Diamond": 70,
+    "Gold": 60,
+    "Silver": 50,
+    "Bronze": 0,   
+}
+# Rank Threshold for Bass
+ACCURACY_PRO_BASS_RANK_THRESHOLDS = {
+    "Top 50": 95, 
+    "Unreal": 90,
+    "Champion": 80,
+    "Diamond": 70,
+    "Gold": 60,
+    "Silver": 50,
+    "Bronze": 0,
+}
+# All instrument rank thresholds to be cycled through
+ACCURACY_INSTRUMENT_THRESHOLDS = {
+    "lead": LEAD_RANK_THRESHOLDS,
+    "drums": DRUMS_RANK_THRESHOLDS,
+    "vocals": VOCALS_RANK_THRESHOLDS,
+    "bass": BASS_RANK_THRESHOLDS,
+    "pro lead": PRO_LEAD_RANK_THRESHOLDS,
+    "pro bass": PRO_BASS_RANK_THRESHOLDS
+}
 
 # Define instrument choices
 INSTRUMENT_CHOICES = [
