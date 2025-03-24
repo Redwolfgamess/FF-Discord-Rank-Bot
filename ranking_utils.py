@@ -35,6 +35,11 @@ def get_user_instrument_data(username, instrument, data):
             return player_info.get(instrument.lower())
     return None
 
+
+# MAKE SURE TO NORMALISE THE SONG INFO BEFORE USING THIS COMMAND - CASE INSENTITIVE MATCHNG. SEE EXAMPLE BELOW
+# normalized_song_info = {
+#             k.lower(): {song.lower().strip(): v for song, v in v.items()} for k, v in song_info.items()
+#         }
 def get_song_metadata(song_name, instrument, song_info):
     instrument_key = instrument.lower()
     song_key = song_name.lower().strip()
