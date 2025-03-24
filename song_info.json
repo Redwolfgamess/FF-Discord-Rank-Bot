@@ -4602,7 +4602,8 @@
             "difficulty": "X"
         },
         "The Brave": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 651
         },
         "The Business": {
             "difficulty": "X"

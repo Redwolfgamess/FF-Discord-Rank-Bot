@@ -543,9 +543,10 @@
             "songs": {
                 "Surround Sound": 719.51,
                 "Ride Wit Me": 620.02,
-                "Starships": 517.88
+                "Starships": 517.88,
+                "i": 721.34
             },
-            "final_rank_score": 1775.9157,
+            "final_rank_score": 2408.459915,
             "rank": "Top 50",
             "named_rank": "Champion"
         }
@@ -596,10 +597,11 @@
                 "Popular": 494.67,
                 "Blueberry Faygo": 395.97,
                 "Barbarian": 592.27,
-                "Pea Like Me": 669.13,
-                "Stressed Out": 587.61
+                "Pea Like Me": 674.84,
+                "Stressed Out": 591.63,
+                "i": 698.69
             },
-            "final_rank_score": 4934.949282679351,
+            "final_rank_score": 5395.000162945696,
             "rank": "Top 50",
             "named_rank": "Unreal"
         }
@@ -672,11 +674,13 @@
                 "Sweet Child O' Mine": 579.99,
                 "Takaneno Hanakosan": 464.81,
                 "March Of The Pigs": 619.41,
-                "Dexting": 546.49
+                "Dexting": 546.49,
+                "Dreamer": 645.16,
+                "You Don't Know Me": 663.43
             },
-            "final_rank_score": 3251.735466978906,
+            "final_rank_score": 4211.023258948462,
             "rank": "Top 50",
-            "named_rank": "Diamond"
+            "named_rank": "Champion"
         },
         "lead": {
             "songs": {
@@ -685,19 +689,22 @@
                 "Ride the Lightning": 591.17,
                 "Yoru Ni Kakeru": 656.02,
                 "Carry on Wayward Son": 669.42,
-                "Change": 666.68
+                "Change": 666.68,
+                "For Latveria": 660.27
             },
-            "final_rank_score": 3322.5890530843744,
+            "final_rank_score": 3817.4915754301555,
             "rank": "Top 50",
-            "named_rank": "Champion"
+            "named_rank": "Unreal"
         },
         "bass": {
             "songs": {
                 "Master of Puppets": 598.63,
                 "i": 676.52,
-                "One": 645.86
+                "One": 645.86,
+                "Ride the Lightning": 617.55,
+                "The Brave": 574.14
             },
-            "final_rank_score": 1830.350575,
+            "final_rank_score": 2828.316889625,
             "rank": "Top 50",
             "named_rank": "Champion"
         },
@@ -713,6 +720,17 @@
             "final_rank_score": 3134.5134373187498,
             "rank": "Top 50",
             "named_rank": "Champion"
+        }
+    },
+    "1255781007907356703": {
+        "username": "steveerkle_15096",
+        "vocals": {
+            "songs": {
+                "Barbarian": 222.78
+            },
+            "final_rank_score": 222.78,
+            "rank": "Bronze",
+            "named_rank": "Bronze"
         }
     }
 }
