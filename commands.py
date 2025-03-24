@@ -14,9 +14,14 @@ from image_processing import extract_data_async
 
 from embed_buttons import SongsPaginationView, LeaderboardPaginationView
 
-# Calculate average accuracy across all songs, categorise /leaderboard with this
-# Include  calculated accuracy on the /tournament_rank command
-# Fix the assigning average role 
+# Link epic account
+    # Use image processor to check epic name
+    # Use image processor to check song name
+    # Make image processor only check for the inputted values rather than the words as well
+    # Fix the pending scores accept and deny button (Currently the deny button does nothing and the accept button incorrectly adds
+    #   a user's score)
+    
+
 @bot.event
 async def on_ready():
     try:
