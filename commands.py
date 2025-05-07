@@ -20,7 +20,7 @@ from embed_buttons import SongsPaginationView, LeaderboardPaginationView
     # Make image processor only check for the inputted values rather than the words as well
     # Fix the pending scores accept and deny button (Currently the deny button does nothing and the accept button incorrectly adds
     #   a user's score)
-    
+
 
 @bot.event
 async def on_ready():
@@ -299,7 +299,6 @@ async def namedrank(interaction: discord.Interaction, username: str, instrument:
 
     except Exception as e:
         await interaction.response.send_message(f"⚠️ Error retrieving named rank: {e}", ephemeral=True)
-from discord.ui import View, Button
 
 @bot.tree.command(name="leaderboard", description="Display top player scores, optionally filtered by instrument.")
 @app_commands.choices(instrument=INSTRUMENT_CHOICES)
@@ -666,6 +665,92 @@ async def remove_tournament_role(interaction: discord.Interaction):
 
     except Exception as e:
         await interaction.followup.send(f"⚠️ Error removing tournament role: {e}", ephemeral=True)
+
+# import aiohttp
+# import unicodedata
+# import json 
+
+
+# instrument_map = {
+#     "Lead": "Solo_Guitar_0",
+#     "Bass": "Solo_Bass_0",
+#     "Vocals": "Solo_Vocals_0",
+#     "Drums": "Solo_Drums_0",
+#     "Pro Lead": "Solo_PeripheralGuitar_0",
+#     "Pro Bass": "Solo_PeripheralBass_0"
+# }
+
+# def normalize_username(name: str) -> str:
+#     normalized = " ".join(unicodedata.normalize("NFKC", name).strip().casefold().split())
+#     print(f"[normalize_username] Raw: '{name}' -> Normalized: '{normalized}'")
+#     return normalized
+
+# @bot.tree.command(name="best_song_score", description="Find your best score for a song from Seasons 5 to 7.")
+# async def best_song_score(interaction: discord.Interaction, instrument: str, username: str, song: str):
+#     await interaction.response.defer()
+
+#     if instrument not in instrument_map:
+#         await interaction.followup.send("Invalid instrument. Please choose from: " + ", ".join(instrument_map.keys()))
+#         return
+
+#     input_username = normalize_username(username)
+#     song_key = song.replace(" ", "").lower()
+#     instrument_key = instrument_map[instrument]
+
+#     print(f"[COMMAND] Instrument: {instrument} -> Key: {instrument_key}")
+#     print(f"[COMMAND] Song: {song} -> Key: {song_key}")
+#     print(f"[COMMAND] Searching scores for: {input_username}")
+
+#     best_score = None
+#     best_season = None
+
+#     async with aiohttp.ClientSession() as session:
+#         for season in [5, 6, 7]:
+#             url = f"https://raw.githubusercontent.com/FNLookup/festival-leaderboards/refs/heads/main/leaderboards/season{season}/{song_key}/{instrument_key}.json"
+#             print(f"[FETCH] Trying URL: {url}")
+#             try:
+#                 async with session.get(url) as response:
+#                     if response.status != 200:
+#                         print(f"[FETCH] Season {season} URL failed with status: {response.status}")
+#                         continue
+
+#                     text = await response.text()
+#                     try:
+#                         data = json.loads(text)
+#                     except json.JSONDecodeError as e:
+#                         print(f"[ERROR] JSON decode error on season {season}: {e}")
+#                         continue
+
+#                     print(f"[FETCH] Loaded JSON for season {season}, entries: {len(data.get('entries', []))}")
+                    
+#                     for entry in data.get("entries", []):
+#                         entry_username_raw = entry.get("userName", "")
+#                         entry_username = normalize_username(entry_username_raw)
+#                         print(f"[COMPARE] Entry Username: '{entry_username}' | Input Username: '{input_username}'")
+
+#                         if entry_username == input_username:
+#                             run = entry.get("best_run", {})
+#                             score = run.get("score", 0)
+#                             print(f"[MATCH] Found matching entry with score {score} in season {season}")
+
+#                             if best_score is None or score > best_score:
+#                                 best_score = score
+#                                 best_season = season
+#                                 print(f"[UPDATE] New best score: {best_score} (Season {best_season})")
+
+
+#             except Exception as e:
+#                 print(f"[ERROR] Failed to fetch or parse season {season} data: {e}")
+#                 continue
+
+#     if best_score:
+#         await interaction.followup.send(
+#             f"🎵 **{username.title()}**'s best score for **{song.title()}** on **{instrument}** is **{best_score:,}** from **Season {best_season}**."
+#         )
+#     else:
+#         await interaction.followup.send(f"No scores found for {username} on {song.title()} ({instrument}).")
+
+
 
 
 # @bot.tree.command(name="check_total_notes", description="Check how many songs with a set difficulty also have total notes stored.")

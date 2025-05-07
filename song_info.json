@@ -34,7 +34,8 @@
             "difficulty": "X"
         },
         "All The Stars": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 649
         },
         "American Idiot": {
             "difficulty": "X"
@@ -104,7 +105,8 @@
             "difficulty": "X"
         },
         "Better Now": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 769
         },
         "Better Off Alone": {
             "difficulty": "X"
@@ -119,7 +121,8 @@
             "difficulty": "X"
         },
         "BIRDS OF A FEATHER": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 345
         },
         "Black Beatles": {
             "difficulty": "X"
@@ -151,7 +154,8 @@
             "difficulty": "X"
         },
         "Bounce Back": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 807
         },
         "Bouncin' Back": {
             "difficulty": "X"
@@ -182,7 +186,8 @@
             "difficulty": "X"
         },
         "Bulls On Parade": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 338
         },
         "Bunny Bounce (Murda Beatz Remix)": {
             "difficulty": "X"
@@ -207,7 +212,8 @@
             "total_notes": 594
         },
         "Call Me Maybe": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 469
         },
         "Can't Feel My Face": {
             "difficulty": "X"
@@ -315,7 +321,8 @@
             "difficulty": "X"
         },
         "Enter Sandman": {
-            "difficulty": "X"
+            "difficulty": 3.0,
+            "total_notes": 328
         },
         "Espresso": {
             "difficulty": 4.0,
@@ -470,7 +477,8 @@
             "difficulty": "X"
         },
         "Hollaback Girl": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 573
         },
         "HOT TO GO!": {
             "difficulty": "X"
@@ -551,7 +559,8 @@
             "difficulty": "X"
         },
         "Kiss Me More": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 661
         },
         "Larry's Place": {
             "difficulty": "X"
@@ -582,7 +591,8 @@
             "difficulty": "X"
         },
         "Lucid Dreams": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 643
         },
         "LUNCH": {
             "difficulty": "X"
@@ -609,7 +619,8 @@
             "difficulty": "X"
         },
         "Me Too": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 533
         },
         "Mi Gente": {
             "difficulty": "X"
@@ -811,7 +822,8 @@
             "difficulty": "X"
         },
         "Say So": {
-            "difficulty": "X"
+            "difficulty": 5.0,
+            "total_notes": 573
         },
         "Scenario": {
             "difficulty": "X"
@@ -867,7 +879,8 @@
             "difficulty": "X"
         },
         "Spies! (Marshmello Remix)": {
-            "difficulty": "X"
+            "difficulty": 3.0,
+            "total_notes": 103
         },
         "Spies! (Murda Beatz Remix)": {
             "difficulty": "X"
@@ -907,7 +920,8 @@
             "difficulty": "X"
         },
         "Super Bass": {
-            "difficulty": "X"
+            "difficulty": 6.0,
+            "total_notes": 815
         },
         "Super Freak": {
             "difficulty": "X"
@@ -1247,6 +1261,22 @@
         },
         "Melt": {
             "difficulty": "X"
+        },
+        "Ain't It Fun": {
+            "difficulty": 4.0,
+            "total_notes": 618
+        },
+        "Taste": {
+            "difficulty": 4.0,
+            "total_notes": 414
+        },
+        "Mambo No.5 (A Little Bit Of...)": {
+            "difficulty": 5.0,
+            "total_notes": 532
+        },
+        "C.R.E.A.M": {
+            "difficulty": 5.0,
+            "total_notes": 803
         }
     },
     "Lead": {
@@ -2470,6 +2500,18 @@
         },
         "Melt": {
             "difficulty": "X"
+        },
+        "Ain't It Fun": {
+            "difficulty": "X"
+        },
+        "Taste": {
+            "difficulty": "X"
+        },
+        "Mambo No.5 (A Little Bit Of...)": {
+            "difficulty": "X"
+        },
+        "C.R.E.A.M": {
+            "difficulty": "X"
         }
     },
     "Drums": {
@@ -2921,7 +2963,8 @@
             "difficulty": "X"
         },
         "Highway Tune": {
-            "difficulty": "X"
+            "difficulty": 4.0,
+            "total_notes": 977
         },
         "Hips Don't Lie": {
             "difficulty": "X"
@@ -3690,6 +3733,18 @@
             "total_notes": 1660
         },
         "Melt": {
+            "difficulty": "X"
+        },
+        "Ain't It Fun": {
+            "difficulty": "X"
+        },
+        "Taste": {
+            "difficulty": "X"
+        },
+        "Mambo No.5 (A Little Bit Of...)": {
+            "difficulty": "X"
+        },
+        "C.R.E.A.M": {
             "difficulty": "X"
         }
     },
@@ -4885,6 +4940,18 @@
         },
         "Melt": {
             "difficulty": "X"
+        },
+        "Ain't It Fun": {
+            "difficulty": "X"
+        },
+        "Taste": {
+            "difficulty": "X"
+        },
+        "Mambo No.5 (A Little Bit Of...)": {
+            "difficulty": "X"
+        },
+        "C.R.E.A.M": {
+            "difficulty": "X"
         }
     },
     "Pro Lead": {
@@ -6068,6 +6135,18 @@
         },
         "Melt": {
             "difficulty": "X"
+        },
+        "Ain't It Fun": {
+            "difficulty": "X"
+        },
+        "Taste": {
+            "difficulty": "X"
+        },
+        "Mambo No.5 (A Little Bit Of...)": {
+            "difficulty": "X"
+        },
+        "C.R.E.A.M": {
+            "difficulty": "X"
         }
     },
     "Pro Bass": {
@@ -7245,6 +7324,18 @@
             "difficulty": "X"
         },
         "Melt": {
+            "difficulty": "X"
+        },
+        "Ain't It Fun": {
+            "difficulty": "X"
+        },
+        "Taste": {
+            "difficulty": "X"
+        },
+        "Mambo No.5 (A Little Bit Of...)": {
+            "difficulty": "X"
+        },
+        "C.R.E.A.M": {
             "difficulty": "X"
         }
     }

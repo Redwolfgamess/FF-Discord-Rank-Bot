@@ -230,11 +230,12 @@
         },
         "vocals": {
             "songs": {
-                "8-Bit Beat": 686.47
+                "8-Bit Beat": 686.47,
+                "No Scrubs": 600.79
             },
-            "final_rank_score": 686.47,
-            "rank": "Unreal",
-            "named_rank": "Unreal"
+            "final_rank_score": 1257.2205,
+            "rank": "Top 50",
+            "named_rank": "Champion"
         }
     },
     "730652667030011954": {
@@ -453,7 +454,7 @@
                 "Surround Sound": 544.17,
                 "NIGHT DANCER": 239.17,
                 "Airplanes": 425.58,
-                "Espresso": 322.13,
+                "Espresso": 357.83,
                 "Misery Business": 404.08,
                 "Happier Than Ever - Edit": 322.22,
                 "Stronger (What Doesn't Kill You)": 347.38,
@@ -480,9 +481,21 @@
                 "Stupid Love": 325.13,
                 "Fighter": 406.5,
                 "OKI DOKI": 391.17,
-                "Paint The Town Red": 420.45
+                "Paint The Town Red": 420.45,
+                "All The Stars": 331.46,
+                "Better Now": 335.57,
+                "BIRDS OF A FEATHER": 323.07,
+                "Kiss Me More": 418.61,
+                "Call Me Maybe": 343.16,
+                "Taste": 325.48,
+                "Hollaback Girl": 389.38,
+                "Mambo No.5 (A Little Bit Of...)": 406.6,
+                "Say So": 403.87,
+                "Stressed Out": 467.87,
+                "Bounce Back": 462.75,
+                "C.R.E.A.M": 417.94
             },
-            "final_rank_score": 7107.922337415868,
+            "final_rank_score": 7778.8805423016465,
             "rank": "Top 50",
             "named_rank": "Gold"
         },
@@ -588,20 +601,25 @@
         "vocals": {
             "songs": {
                 "Adam's Song": 200.19,
-                "Surround Sound": 687.77,
+                "Surround Sound": 703.64,
                 "The Way I Are": 378.29,
-                "8-Bit Beat": 667.92,
+                "8-Bit Beat": 673.48,
                 "I Want It That Way": 301.35,
-                "Bling-Bang-Bang-Born": 660.45,
+                "Bling-Bang-Bang-Born": 678.68,
                 "Armed And Dangerous": 495.87,
                 "Popular": 494.67,
                 "Blueberry Faygo": 395.97,
                 "Barbarian": 592.27,
-                "Pea Like Me": 674.84,
+                "Pea Like Me": 695.78,
                 "Stressed Out": 591.63,
-                "i": 698.69
+                "i": 710.88,
+                "Ain't It Fun": 398.42,
+                "Enter Sandman": 299.34,
+                "Bulls On Parade": 502.58,
+                "Me Too": 410.32,
+                "Notorious Thugs": 676.95
             },
-            "final_rank_score": 5395.000162945696,
+            "final_rank_score": 6643.814483829473,
             "rank": "Top 50",
             "named_rank": "Unreal"
         }
@@ -676,9 +694,10 @@
                 "March Of The Pigs": 619.41,
                 "Dexting": 546.49,
                 "Dreamer": 645.16,
-                "You Don't Know Me": 663.43
+                "You Don't Know Me": 663.43,
+                "Highway Tune": 349.94
             },
-            "final_rank_score": 4211.023258948462,
+            "final_rank_score": 4431.5727373874915,
             "rank": "Top 50",
             "named_rank": "Champion"
         },
@@ -690,9 +709,11 @@
                 "Yoru Ni Kakeru": 656.02,
                 "Carry on Wayward Son": 669.42,
                 "Change": 666.68,
-                "For Latveria": 660.27
+                "For Latveria": 660.27,
+                "Hail To The King": 670.52,
+                "The Brave": 610.7
             },
-            "final_rank_score": 3817.4915754301555,
+            "final_rank_score": 4705.6652888702465,
             "rank": "Top 50",
             "named_rank": "Unreal"
         },
@@ -715,9 +736,12 @@
                 "Bling-Bang-Bang-Born": 643.88,
                 "Pea Like Me": 659.61,
                 "i": 661.22,
-                "Dragula": 305.38
+                "Dragula": 305.38,
+                "Super Bass": 577.56,
+                "Spies! (Marshmello Remix)": 282.49,
+                "8-Bit Beat": 627.1
             },
-            "final_rank_score": 3134.5134373187498,
+            "final_rank_score": 4210.634979984081,
             "rank": "Top 50",
             "named_rank": "Champion"
         }
@@ -731,6 +755,18 @@
             "final_rank_score": 222.78,
             "rank": "Bronze",
             "named_rank": "Bronze"
+        }
+    },
+    "1149849393269329961": {
+        "username": "corvowavo",
+        "lead": {
+            "songs": {
+                "Battery": 503.19,
+                "Hail To The King": 529.94
+            },
+            "final_rank_score": 1007.9705,
+            "rank": "Top 50",
+            "named_rank": "Diamond"
         }
     }
 }

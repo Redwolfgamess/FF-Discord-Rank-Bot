@@ -14,6 +14,7 @@ import re
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"  
 
 
+
 def preprocess_image(image, scale_factor=1.0):
     # Resize the image to enhance OCR accuracy
     if scale_factor != 1.0:

@@ -98,52 +98,52 @@ class LeaderboardPaginationView(View):
         self.next_button.disabled = self.page >= (len(self.players) - 1) // self.per_page
         await interaction.response.edit_message(embed=self.generate_embed(), view=self)
 
-class PaginationView(View):
-    def __init__(self, missing_songs, total_songs_with_difficulty, songs_with_total_notes, page=0):
-        super().__init__(timeout=120)
-        self.missing_songs = missing_songs
-        self.page = page
-        self.total_songs_with_difficulty = total_songs_with_difficulty
-        self.songs_with_total_notes = songs_with_total_notes
-        self.per_page = 10  # Songs per page
+# class PaginationView(View):
+#     def __init__(self, missing_songs, total_songs_with_difficulty, songs_with_total_notes, page=0):
+#         super().__init__(timeout=120)
+#         self.missing_songs = missing_songs
+#         self.page = page
+#         self.total_songs_with_difficulty = total_songs_with_difficulty
+#         self.songs_with_total_notes = songs_with_total_notes
+#         self.per_page = 10  # Songs per page
 
-        # Disable previous button if on first page
-        self.previous_button.disabled = self.page == 0
+#         # Disable previous button if on first page
+#         self.previous_button.disabled = self.page == 0
 
-        # Disable next button if on last page
-        self.next_button.disabled = self.page >= (len(missing_songs) - 1) // self.per_page
+#         # Disable next button if on last page
+#         self.next_button.disabled = self.page >= (len(missing_songs) - 1) // self.per_page
 
-    def generate_embed(self):
-        percentage = (self.songs_with_total_notes / self.total_songs_with_difficulty) * 100 if self.total_songs_with_difficulty else 0
+#     def generate_embed(self):
+#         percentage = (self.songs_with_total_notes / self.total_songs_with_difficulty) * 100 if self.total_songs_with_difficulty else 0
 
-        # Get 10 songs for the current page
-        start = self.page * self.per_page
-        end = start + self.per_page
-        displayed_songs = self.missing_songs[start:end]
+#         # Get 10 songs for the current page
+#         start = self.page * self.per_page
+#         end = start + self.per_page
+#         displayed_songs = self.missing_songs[start:end]
 
-        missing_songs_text = "\n".join([f"🎵 {song} ({instrument})" for instrument, song in displayed_songs]) if displayed_songs else "✅ All songs have total notes!"
+#         missing_songs_text = "\n".join([f"🎵 {song} ({instrument})" for instrument, song in displayed_songs]) if displayed_songs else "✅ All songs have total notes!"
 
-        embed = discord.Embed(
-            title="📊 Total Notes Coverage",
-            description=f"**Total Songs with Difficulty Set:** {self.total_songs_with_difficulty}\n"
-                        f"**Songs with Total Notes:** {self.songs_with_total_notes}\n"
-                        f"**Coverage Percentage:** {percentage:.2f}%\n\n"
-                        f"**Missing Total Notes:**\n{missing_songs_text}",
-            color=discord.Color.blue()
-        )
-        embed.set_footer(text=f"Page {self.page + 1} of {(len(self.missing_songs) - 1) // self.per_page + 1}")
-        return embed
+#         embed = discord.Embed(
+#             title="📊 Total Notes Coverage",
+#             description=f"**Total Songs with Difficulty Set:** {self.total_songs_with_difficulty}\n"
+#                         f"**Songs with Total Notes:** {self.songs_with_total_notes}\n"
+#                         f"**Coverage Percentage:** {percentage:.2f}%\n\n"
+#                         f"**Missing Total Notes:**\n{missing_songs_text}",
+#             color=discord.Color.blue()
+#         )
+#         embed.set_footer(text=f"Page {self.page + 1} of {(len(self.missing_songs) - 1) // self.per_page + 1}")
+#         return embed
 
-    @discord.ui.button(label="⬅️ Previous", style=discord.ButtonStyle.gray)
-    async def previous_button(self, interaction: discord.Interaction, button: Button):
-        self.page -= 1
-        self.previous_button.disabled = self.page == 0
-        self.next_button.disabled = self.page >= (len(self.missing_songs) - 1) // self.per_page
-        await interaction.response.edit_message(embed=self.generate_embed(), view=self)
+#     @discord.ui.button(label="⬅️ Previous", style=discord.ButtonStyle.gray)
+#     async def previous_button(self, interaction: discord.Interaction, button: Button):
+#         self.page -= 1
+#         self.previous_button.disabled = self.page == 0
+#         self.next_button.disabled = self.page >= (len(self.missing_songs) - 1) // self.per_page
+#         await interaction.response.edit_message(embed=self.generate_embed(), view=self)
 
-    @discord.ui.button(label="➡️ Next", style=discord.ButtonStyle.gray)
-    async def next_button(self, interaction: discord.Interaction, button: Button):
-        self.page += 1
-        self.previous_button.disabled = self.page == 0
-        self.next_button.disabled = self.page >= (len(self.missing_songs) - 1) // self.per_page
-        await interaction.response.edit_message(embed=self.generate_embed(), view=self)
+#     @discord.ui.button(label="➡️ Next", style=discord.ButtonStyle.gray)
+#     async def next_button(self, interaction: discord.Interaction, button: Button):
+#         self.page += 1
+#         self.previous_button.disabled = self.page == 0
+#         self.next_button.disabled = self.page >= (len(self.missing_songs) - 1) // self.per_page
+#         await interaction.response.edit_message(embed=self.generate_embed(), view=self)
